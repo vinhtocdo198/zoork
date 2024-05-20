@@ -4,14 +4,14 @@
 
 #include "Player.h"
 
-Player *Player::playerInstance = nullptr;
+Player* Player::playerInstance = nullptr;
 
-void Player::setCurrentRoom(Room *r)
+void Player::setCurrentRoom(Room* r)
 {
     currentRoom = r;
 }
 
-Room *Player::getCurrentRoom() const
+Room* Player::getCurrentRoom() const
 {
     return currentRoom;
 }

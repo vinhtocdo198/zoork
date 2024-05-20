@@ -17,9 +17,9 @@ class Passage;
 class Room : public Location
 {
 public:
-    Room(const std::string &, const std::string &);
+    Room(const std::string&, const std::string&);
 
-    Room(const std::string &, const std::string &, std::shared_ptr<Command>);
+    Room(const std::string&, const std::string&, std::shared_ptr<Command>);
 
     //    void addItem(Item*);
     //    void removeItem(const std::string&);
@@ -29,11 +29,11 @@ public:
     //    void removeCharacter(const std::string&);
     //    Character* getCharacter(const std::string&);
 
-    void addPassage(const std::string &, std::shared_ptr<Passage>);
+    void addPassage(const std::string&, std::shared_ptr<Passage>);
 
-    void removePassage(const std::string &);
+    void removePassage(const std::string&);
 
-    std::shared_ptr<Passage> getPassage(const std::string &);
+    std::shared_ptr<Passage> getPassage(const std::string&);
 
 protected:
     //    std::vector<Item*> items;

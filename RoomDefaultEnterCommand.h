@@ -10,7 +10,9 @@
 class RoomDefaultEnterCommand : public Command
 {
 public:
-    explicit RoomDefaultEnterCommand(GameObject *g) : Command(g) {}
+    explicit RoomDefaultEnterCommand(GameObject* g) : Command(g)
+    {
+    }
 
     void execute() override;
 };

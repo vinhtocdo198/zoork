@@ -12,7 +12,9 @@
 class PassageDefaultEnterCommand : public Command
 {
 public:
-    explicit PassageDefaultEnterCommand(GameObject *g) : Command(g) {}
+    explicit PassageDefaultEnterCommand(GameObject* g) : Command(g)
+    {
+    }
 
     void execute() override;
 };

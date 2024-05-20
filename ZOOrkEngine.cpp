@@ -6,8 +6,11 @@
 #include <memory>
 #include <utility>
 #include <algorithm>
+#include <iostream>
+#include <sstream>
+#include <ranges>
 
-ZOOrkEngine::ZOOrkEngine(std::shared_ptr<Room> start)
+ZOOrkEngine::ZOOrkEngine(const std::shared_ptr<Room>& start)
 {
     player = Player::instance();
     player->setCurrentRoom(start.get());
@@ -25,17 +28,17 @@ void ZOOrkEngine::run()
 
         std::vector<std::string> words = tokenizeString(input);
         std::string command = words[0];
-        std::vector<std::string> arguments(words.begin() + 1, words.end());
+        const auto arguments = std::vector(words.begin() + 1, words.end());
 
         if (command == "go")
         {
             handleGoCommand(arguments);
         }
-        else if ((command == "look") || (command == "inspect"))
+        else if (command == "look" || command == "inspect")
         {
             handleLookCommand(arguments);
         }
-        else if ((command == "take") || (command == "get"))
+        else if (command == "take" || command == "get")
         {
             handleTakeCommand(arguments);
         }
@@ -54,7 +57,7 @@ void ZOOrkEngine::run()
     }
 }
 
-void ZOOrkEngine::handleGoCommand(std::vector<std::string> arguments)
+void ZOOrkEngine::handleGoCommand(const std::vector<std::string>& arguments)
 {
     std::string direction;
     if (arguments[0] == "n" || arguments[0] == "north")
@@ -86,31 +89,31 @@ void ZOOrkEngine::handleGoCommand(std::vector<std::string> arguments)
         direction = arguments[0];
     }
 
-    Room *currentRoom = player->getCurrentRoom();
+    Room* currentRoom = player->getCurrentRoom();
     auto passage = currentRoom->getPassage(direction);
     player->setCurrentRoom(passage->getTo());
     passage->enter();
 }
 
-void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments)
+void ZOOrkEngine::handleLookCommand(const std::vector<std::string>& arguments)
 {
     // To be implemented
     std::cout << "This functionality is not yet enabled.\n";
 }
 
-void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments)
+void ZOOrkEngine::handleTakeCommand(const std::vector<std::string>& arguments)
 {
     // To be implemented
     std::cout << "This functionality is not yet enabled.\n";
 }
 
-void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments)
+void ZOOrkEngine::handleDropCommand(const std::vector<std::string>& arguments)
 {
     // To be implemented
     std::cout << "This functionality is not yet enabled.\n";
 }
 
-void ZOOrkEngine::handleQuitCommand(std::vector<std::string> arguments)
+void ZOOrkEngine::handleQuitCommand(const std::vector<std::string>& arguments)
 {
     std::string input;
     std::cout << "Are you sure you want to QUIT?\n> ";
@@ -123,7 +126,7 @@ void ZOOrkEngine::handleQuitCommand(std::vector<std::string> arguments)
     }
 }
 
-std::vector<std::string> ZOOrkEngine::tokenizeString(const std::string &input)
+std::vector<std::string> ZOOrkEngine::tokenizeString(const std::string& input)
 {
     std::vector<std::string> tokens;
     std::stringstream ss(input);
@@ -140,7 +143,7 @@ std::vector<std::string> ZOOrkEngine::tokenizeString(const std::string &input)
 std::string ZOOrkEngine::makeLowercase(std::string input)
 {
     std::string output = std::move(input);
-    std::transform(output.begin(), output.end(), output.begin(), ::tolower);
+    std::ranges::transform(output, output.begin(), tolower);
 
     return output;
 }

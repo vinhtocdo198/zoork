@@ -8,33 +8,31 @@
 #include "Player.h"
 #include "Location.h"
 #include "Passage.h"
-#include <iostream>
-#include <sstream>
 #include <string>
 #include <vector>
 
 class ZOOrkEngine
 {
 public:
-    ZOOrkEngine(std::shared_ptr<Room>);
+    explicit ZOOrkEngine(const std::shared_ptr<Room>&);
 
     void run();
 
 private:
     bool gameOver = false;
-    Player *player;
+    Player* player;
 
-    void handleGoCommand(std::vector<std::string>);
+    void handleGoCommand(const std::vector<std::string>&);
 
-    void handleLookCommand(std::vector<std::string>);
+    void handleLookCommand(const std::vector<std::string>&);
 
-    void handleTakeCommand(std::vector<std::string>);
+    void handleTakeCommand(const std::vector<std::string>&);
 
-    void handleDropCommand(std::vector<std::string>);
+    void handleDropCommand(const std::vector<std::string>&);
 
-    void handleQuitCommand(std::vector<std::string>);
+    void handleQuitCommand(const std::vector<std::string>&);
 
-    static std::vector<std::string> tokenizeString(const std::string &);
+    static std::vector<std::string> tokenizeString(const std::string&);
 
     static std::string makeLowercase(std::string);
 };
