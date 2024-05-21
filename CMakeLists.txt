@@ -9,4 +9,8 @@ add_executable(ZOOrk main.cpp Item.h Command.h Item.cpp Character.cpp Character.
         Door.h
         Door.cpp
         UnlockDoorCommand.h
-        UnlockDoorCommand.cpp)
+        UnlockDoorCommand.cpp
+        SetFireCommand.h
+        SetFireCommand.cpp
+        LightUpCommand.h
+        LightUpCommand.cpp)

@@ -68,7 +68,9 @@
 				26,
 				29,
 				31,
-				33
+				33,
+				35,
+				37
 			]
 		}
 	],
@@ -121,7 +123,9 @@
 				26,
 				29,
 				31,
-				33
+				33,
+				35,
+				37
 			]
 		},
 		{
@@ -144,7 +148,9 @@
 				27,
 				28,
 				30,
-				32
+				32,
+				34,
+				36
 			]
 		}
 	],
@@ -335,6 +341,28 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "UnlockDoorCommand.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "SetFireCommand.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "SetFireCommand.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "LightUpCommand.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "LightUpCommand.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

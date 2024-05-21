@@ -22,10 +22,13 @@ public:
 
     bool isObtainable() const;
 
+    void setObtainable(bool);
+
     void setUseCommand(std::shared_ptr<Command>);
 
 protected:
     bool obtainable;
+    bool inUse = false;
     std::shared_ptr<Command> useCommand;
 };
 

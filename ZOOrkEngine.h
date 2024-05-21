@@ -33,7 +33,7 @@ private:
 
     void handleQuitCommand(const std::vector<std::string>&);
 
-    void handleUseCommand(const std::vector<std::string>&) const;
+    static void handleUseCommand(const std::vector<std::string>&);
 
     static void handleInventoryCommand();
 

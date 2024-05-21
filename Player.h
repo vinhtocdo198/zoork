@@ -36,6 +36,8 @@ public:
 
     static void dropItem(const std::string& itemName);
 
+    static Item* getItem(const std::string&);
+
     static std::vector<Item*> getInventory();
 
 private:

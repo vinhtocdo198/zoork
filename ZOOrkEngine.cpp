@@ -79,7 +79,7 @@ void ZOOrkEngine::run()
         if (player->getCurrentRoom()->getName() == "foyer" && !firstEnter)
         {
             std::cout << "The door behind you suddenly closes. You realize you are trapped inside this creepy place!\n"
-                "Find the necklace and find a way out!\n\n";
+                "Find the jewelry and a way out!\n\n";
             firstEnter = true;
         }
     }
@@ -163,7 +163,6 @@ void ZOOrkEngine::handleTakeCommand(const std::vector<std::string>& arguments) c
                 if (item->isObtainable())
                 {
                     Player::takeItem(player->getCurrentRoom()->retrieveItem(item->getName()));
-                    // player->getCurrentRoom()->removeItem(arg);
                     std::cout << "You obtained " << item->getName() << ".\n\n";
                 }
                 else
@@ -245,7 +244,7 @@ void ZOOrkEngine::handleInventoryCommand()
     }
 }
 
-void ZOOrkEngine::handleUseCommand(const std::vector<std::string>& arguments) const
+void ZOOrkEngine::handleUseCommand(const std::vector<std::string>& arguments)
 {
     if (arguments.empty())
     {

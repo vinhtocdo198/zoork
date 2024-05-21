@@ -26,6 +26,11 @@ bool Item::isObtainable() const
     return obtainable;
 }
 
+void Item::setObtainable(const bool o)
+{
+    obtainable = o;
+}
+
 void Item::setUseCommand(std::shared_ptr<Command> c)
 {
     useCommand = std::move(c);

@@ -3,7 +3,6 @@
 //
 
 #include "Player.h"
-
 #include <iostream>
 
 Player* Player::playerInstance = nullptr;
@@ -34,6 +33,18 @@ void Player::dropItem(const std::string& itemName)
             return;
         }
     }
+}
+
+Item* Player::getItem(const std::string& itemName)
+{
+    for (const auto& item : inventory)
+    {
+        if (item->getName() == itemName)
+        {
+            return item;
+        }
+    }
+    return nullptr;
 }
 
 std::vector<Item*> Player::getInventory()
