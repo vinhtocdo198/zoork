@@ -21,16 +21,21 @@ public:
 private:
     bool gameOver = false;
     Player* player;
+    bool firstEnter = false;
 
-    void handleGoCommand(const std::vector<std::string>&);
+    void handleGoCommand(const std::vector<std::string>&) const;
 
-    void handleLookCommand(const std::vector<std::string>&);
+    void handleLookCommand(const std::vector<std::string>&) const;
 
-    void handleTakeCommand(const std::vector<std::string>&);
+    void handleTakeCommand(const std::vector<std::string>&) const;
 
-    void handleDropCommand(const std::vector<std::string>&);
+    void handleDropCommand(const std::vector<std::string>&) const;
 
     void handleQuitCommand(const std::vector<std::string>&);
+
+    void handleUseCommand(const std::vector<std::string>&) const;
+
+    static void handleInventoryCommand();
 
     static std::vector<std::string> tokenizeString(const std::string&);
 

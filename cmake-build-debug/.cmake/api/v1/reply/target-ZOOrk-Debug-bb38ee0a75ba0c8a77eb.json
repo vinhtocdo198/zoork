@@ -65,7 +65,10 @@
 				20,
 				22,
 				24,
-				26
+				26,
+				29,
+				31,
+				33
 			]
 		}
 	],
@@ -115,7 +118,10 @@
 				20,
 				22,
 				24,
-				26
+				26,
+				29,
+				31,
+				33
 			]
 		},
 		{
@@ -135,7 +141,10 @@
 				21,
 				23,
 				25,
-				27
+				27,
+				28,
+				30,
+				32
 			]
 		}
 	],
@@ -294,6 +303,39 @@
 			"backtrace" : 1,
 			"path" : "NullPassage.h",
 			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "SweepLeavesCommand.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "SweepLeavesCommand.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Door.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Door.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "UnlockDoorCommand.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "UnlockDoorCommand.cpp",
+			"sourceGroupIndex" : 0
 		}
 	],
 	"type" : "EXECUTABLE"

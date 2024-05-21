@@ -6,7 +6,6 @@
 #define ZOORK_NULLCOMMAND_H
 
 #include "Command.h"
-#include <iostream>
 
 class NullCommand : public Command
 {

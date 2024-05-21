@@ -15,6 +15,78 @@ Room::Room(const std::string& n, const std::string& d, std::shared_ptr<Command> 
 {
 }
 
+void Room::addItem(Item* i)
+{
+    items.push_back(i);
+}
+
+void Room::removeItem(const std::string& itemName)
+{
+    for (auto it = items.begin(); it != items.end(); ++it)
+    {
+        if ((*it)->getName() == itemName)
+        {
+            items.erase(it);
+            return;
+        }
+    }
+}
+
+Item* Room::getItem(const std::string& itemName)
+{
+    for (const auto& item : items)
+    {
+        if (item->getName() == itemName)
+        {
+            return item;
+        }
+    }
+    return nullptr;
+}
+
+Item* Room::retrieveItem(const std::string& itemName)
+{
+    for (auto it = items.begin(); it != items.end(); ++it)
+    {
+        if ((*it)->getName() == itemName)
+        {
+            Item* temp = *it;
+            items.erase(it);
+            return temp;
+        }
+    }
+    return nullptr;
+}
+
+void Room::addCharacter(Character* c)
+{
+    characters.push_back(c);
+}
+
+void Room::removeCharacter(const std::string& characterName)
+{
+    for (auto it = characters.begin(); it != characters.end(); ++it)
+    {
+        if ((*it)->getName() == characterName)
+        {
+            characters.erase(it);
+            return;
+        }
+    }
+}
+
+Character* Room::getCharacter(const std::string& characterName)
+{
+    for (const auto& character : characters)
+    {
+        if (character->getName() == characterName)
+        {
+            return character;
+        }
+    }
+    return nullptr;
+}
+
 void Room::addPassage(const std::string& direction, std::shared_ptr<Passage> p)
 {
     passageMap[direction] = std::move(p);
@@ -34,9 +106,6 @@ std::shared_ptr<Passage> Room::getPassage(const std::string& direction)
     {
         return passageMap[direction];
     }
-    else
-    {
-        std::cout << "It is impossible to go " << direction << "!\n";
-        return std::make_shared<NullPassage>(this);
-    }
+    std::cout << "It is impossible to go " << direction << "!\n";
+    return std::make_shared<NullPassage>(this);
 }

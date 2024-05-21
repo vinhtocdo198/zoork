@@ -7,7 +7,6 @@
 
 #include "Command.h"
 #include "GameObject.h"
-#include "NullCommand.h"
 #include <memory>
 
 class Item : public GameObject
@@ -15,15 +14,18 @@ class Item : public GameObject
 public:
     virtual ~Item() = default;
 
-    Item(const std::string&, const std::string&);
+    Item(const std::string&, const std::string&, bool);
 
-    Item(const std::string&, const std::string&, std::shared_ptr<Command>);
+    Item(const std::string&, const std::string&, bool, std::shared_ptr<Command>);
 
     virtual void use();
+
+    bool isObtainable() const;
 
     void setUseCommand(std::shared_ptr<Command>);
 
 protected:
+    bool obtainable;
     std::shared_ptr<Command> useCommand;
 };
 

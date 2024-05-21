@@ -6,7 +6,6 @@
 #define ZOORK_COMMAND_H
 
 #include "GameObject.h"
-#include <iostream>
 
 class Command
 {

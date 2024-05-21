@@ -7,8 +7,6 @@
 
 #include "Command.h"
 
-#include <utility>
-
 class PassageDefaultEnterCommand : public Command
 {
 public:

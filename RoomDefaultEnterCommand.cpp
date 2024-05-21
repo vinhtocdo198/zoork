@@ -3,6 +3,7 @@
 //
 
 #include "RoomDefaultEnterCommand.h"
+#include <iostream>
 
 void RoomDefaultEnterCommand::execute()
 {

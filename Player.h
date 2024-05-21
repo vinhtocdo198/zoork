@@ -8,18 +8,20 @@
 #include "Character.h"
 #include "Location.h"
 #include "NullRoom.h"
+#include "Item.h"
+#include <vector>
 
 class Player : public Character
 {
 public:
     static Player* instance()
     {
-        // Note: lazy instantiation of the singleton Player object
+        // Lazy instantiation of the singleton Player object
         if (!playerInstance)
         {
             playerInstance = new Player();
         }
-        return Player::playerInstance;
+        return playerInstance;
     }
 
     void setCurrentRoom(Room*);
@@ -30,8 +32,15 @@ public:
 
     Player& operator=(const Player&) = delete;
 
+    static void takeItem(Item* item);
+
+    static void dropItem(const std::string& itemName);
+
+    static std::vector<Item*> getInventory();
+
 private:
     static Player* playerInstance;
+    static std::vector<Item*> inventory;
     Room* currentRoom;
 
     Player() : Character("You", "You are a person, alike in dignity to any other, but uniquely you."),

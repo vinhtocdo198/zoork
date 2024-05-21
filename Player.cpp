@@ -4,7 +4,10 @@
 
 #include "Player.h"
 
+#include <iostream>
+
 Player* Player::playerInstance = nullptr;
+std::vector<Item*> Player::inventory;
 
 void Player::setCurrentRoom(Room* r)
 {
@@ -14,4 +17,26 @@ void Player::setCurrentRoom(Room* r)
 Room* Player::getCurrentRoom() const
 {
     return currentRoom;
+}
+
+void Player::takeItem(Item* item)
+{
+    inventory.push_back(item);
+}
+
+void Player::dropItem(const std::string& itemName)
+{
+    for (auto it = inventory.begin(); it != inventory.end(); ++it)
+    {
+        if ((*it)->getName() == itemName)
+        {
+            inventory.erase(it);
+            return;
+        }
+    }
+}
+
+std::vector<Item*> Player::getInventory()
+{
+    return inventory;
 }
