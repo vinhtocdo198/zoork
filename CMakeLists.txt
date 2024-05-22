@@ -13,4 +13,6 @@ add_executable(ZOOrk main.cpp Item.h Command.h Item.cpp Character.cpp Character.
         SetFireCommand.h
         SetFireCommand.cpp
         LightUpCommand.h
-        LightUpCommand.cpp)
+        LightUpCommand.cpp
+        PlayPianoCommand.cpp
+        PlayPianoCommand.h)

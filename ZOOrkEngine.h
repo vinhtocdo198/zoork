@@ -31,11 +31,13 @@ private:
 
     void handleDropCommand(const std::vector<std::string>&) const;
 
-    void handleQuitCommand(const std::vector<std::string>&);
+    void handleInteractCommand(const std::string&) const;
 
     static void handleUseCommand(const std::vector<std::string>&);
 
     static void handleInventoryCommand();
+
+    void handleQuitCommand(const std::vector<std::string>&);
 
     static std::vector<std::string> tokenizeString(const std::string&);
 

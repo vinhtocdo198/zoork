@@ -2,9 +2,9 @@
 #include "Room.h"
 #include "ZOOrkEngine.h"
 #include <memory>
-
 #include "Door.h"
 #include "LightUpCommand.h"
+#include "PlayPianoCommand.h"
 #include "SweepLeavesCommand.h"
 #include "UnlockDoorCommand.h"
 #include "SetFireCommand.h"
@@ -12,17 +12,18 @@
 int main()
 {
     std::cout << "Welcome to the haunted manor! You are in debt and desperately in need of money.\n"
-        "Lucky for you, there is ancient jewelry hidden within this eerie, abandoned house.\n"
+        "Lucky for you, there is an ancient jewelry hidden within this eerie, abandoned house.\n"
         "This is your chance to change your life, but the thought of venturing inside sends\n"
-        "chills down your spine. Do you dare to take this challenge?\n\n";
+        "chills down your spine. Do you dare to take this challenge?\n"
+        "Type help/h for available commands.\n\n";
 
     // TODO: ask for obtainable items?
 
     // Front yard
     const auto front_yard = std::make_shared<Room>("front-yard",
                                                    "You are standing in a lawn south of the manor. All windows are barred.\n"
-                                                   "There is a rusty lock on the front door, and a broom lying on the floor.\n"
-                                                   "A leaf-pile is on your left, in front of the windows.\n");
+                                                   "There is a rusty lock on the front door, and a [broom] lying on the floor.\n"
+                                                   "A [leaf-pile] is on your left, in front of the windows.\n");
     const auto front_key = std::make_shared<Item>("front-key", "A small, rusty key.", true);
     const auto lighter = std::make_shared<Item>("lighter", "A lighter, small and convenient.", true);
     const auto leaf_pile = std::make_shared<Item>("leaf-pile", "A very normal pile of leaves.", false);
@@ -34,7 +35,7 @@ int main()
 
     const auto foyer = std::make_shared<Room>("foyer",
                                               "You are now in the foyer of the house. It's so dark that you can't see a thing,\n"
-                                              "except an oil-lamp on the window frame on your right.\n");
+                                              "except an [oil-lamp] on the window frame on your right.\n");
     const auto front_door = std::make_shared<Door>("front-door", "This door looks sturdy.", front_yard.get(),
                                                    foyer.get(), true);
 
@@ -45,10 +46,28 @@ int main()
     front_key->setUseCommand(unlock_front_door_command);
 
     const auto living_room = std::make_shared<Room>("living-room",
-                                                    "You are now in the living room. A corridor leads to the kitchen to the north.\n");
+                                                    "You are now in the living room. A corridor leads to the kitchen to the north.\n"
+                                                    "An worn-out [sofa] is in the middle, facing a vintage [TV]. Above the TV, a [deer-head]\n"
+                                                    "and a Mona Lisa [painting] are hung on the wall.\n");
+    const auto sofa = std::make_shared<Item>("sofa", "An old, worn-out sofa.", false);
+    const auto tv = std::make_shared<Item>("tv", "A vintage TV.", false);
+    const auto deer_head = std::make_shared<Item>("deer-head",
+                                                  "A deer head mounted on the wall. Must be a booty of the owner.",
+                                                  false);
+    const auto painting = std::make_shared<Item>("painting", "A replica of the Mona Lisa painting.", false);
+    living_room->addItem(sofa.get());
+    living_room->addItem(tv.get());
+    living_room->addItem(deer_head.get());
+    living_room->addItem(painting.get());
 
-    const auto piano = std::make_shared<Room>("piano",
-                                              "You are now in the piano room. The living room is to the south.\n");
+    const auto hallway = std::make_shared<Room>("hallway",
+                                              "You are now in the hallway. A huge [piano] appears before your eyes.\n"
+                                              "Ahead is a door standing slightly ajar. There is another door on your\n"
+                                              "left and one more on your right.\n");
+    const auto piano = std::make_shared<Item>("piano", "A grand piano, in good condition. Should I play it?", false);
+    hallway->addItem(piano.get());
+    const auto play_piano_command = std::make_shared<PlayPianoCommand>(piano.get());
+    piano->setUseCommand(play_piano_command);
 
     const auto oil_lamp = std::make_shared<Item>(
         "oil-lamp", "An old-fashioned oil lamp. Must be a hundred years old.", false);
@@ -57,7 +76,7 @@ int main()
     lighter->setUseCommand(set_fire_command);
 
     const auto light_up_command = std::make_shared<LightUpCommand>(oil_lamp.get(), foyer.get(),
-                                                                   living_room.get(), piano.get());
+                                                                   living_room.get(), hallway.get());
     oil_lamp->setUseCommand(light_up_command);
 
     const auto kitchen = std::make_shared<Room>("kitchen",
@@ -70,6 +89,7 @@ int main()
                                                "You are now in the toilet. The bathroom is to the east.\n");
 
 
+    // 2nd floor
     const auto master_bedroom = std::make_shared<Room>("master-bedroom",
                                                        "You are now in the master bedroom. The bathroom is to the east.\n");
 
@@ -91,11 +111,11 @@ int main()
     Passage::createBasicPassage(laundry_room.get(), toilet.get(), "south", true);
 
     // 2nd floor passages
-    Passage::createBasicPassage(piano.get(), master_bedroom.get(), "north", true);
+    Passage::createBasicPassage(hallway.get(), master_bedroom.get(), "north", true);
     Passage::createBasicPassage(master_bedroom.get(), ensuite_bathroom.get(), "east", true);
     Passage::createBasicPassage(master_bedroom.get(), balcony.get(), "north", true);
-    Passage::createBasicPassage(piano.get(), kid_bedroom.get(), "west", true);
-    Passage::createBasicPassage(piano.get(), bathroom.get(), "east", true);
+    Passage::createBasicPassage(hallway.get(), kid_bedroom.get(), "west", true);
+    Passage::createBasicPassage(hallway.get(), bathroom.get(), "east", true);
 
     ZOOrkEngine zoork(front_yard);
 

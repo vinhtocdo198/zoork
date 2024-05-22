@@ -163,6 +163,12 @@ build CMakeFiles/ZOOrk.dir/LightUpCommand.cpp.obj: CXX_COMPILER__ZOOrk_unscanned
   OBJECT_DIR = CMakeFiles\ZOOrk.dir
   OBJECT_FILE_DIR = CMakeFiles\ZOOrk.dir
 
+build CMakeFiles/ZOOrk.dir/PlayPianoCommand.cpp.obj: CXX_COMPILER__ZOOrk_unscanned_Debug D$:/Miscellaneous/CSE3PSD/Assignment$ 3/ZOOrk/PlayPianoCommand.cpp || cmake_object_order_depends_target_ZOOrk
+  DEP_FILE = CMakeFiles\ZOOrk.dir\PlayPianoCommand.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\ZOOrk.dir
+  OBJECT_FILE_DIR = CMakeFiles\ZOOrk.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ZOOrk
@@ -171,7 +177,7 @@ build CMakeFiles/ZOOrk.dir/LightUpCommand.cpp.obj: CXX_COMPILER__ZOOrk_unscanned
 #############################################
 # Link the executable ZOOrk.exe
 
-build ZOOrk.exe: CXX_EXECUTABLE_LINKER__ZOOrk_Debug CMakeFiles/ZOOrk.dir/main.cpp.obj CMakeFiles/ZOOrk.dir/Item.cpp.obj CMakeFiles/ZOOrk.dir/Character.cpp.obj CMakeFiles/ZOOrk.dir/Location.cpp.obj CMakeFiles/ZOOrk.dir/GameObject.cpp.obj CMakeFiles/ZOOrk.dir/Room.cpp.obj CMakeFiles/ZOOrk.dir/Passage.cpp.obj CMakeFiles/ZOOrk.dir/NullRoom.cpp.obj CMakeFiles/ZOOrk.dir/NullCommand.cpp.obj CMakeFiles/ZOOrk.dir/Player.cpp.obj CMakeFiles/ZOOrk.dir/RoomDefaultEnterCommand.cpp.obj CMakeFiles/ZOOrk.dir/ZOOrkEngine.cpp.obj CMakeFiles/ZOOrk.dir/PassageDefaultEnterCommand.cpp.obj CMakeFiles/ZOOrk.dir/NullPassage.cpp.obj CMakeFiles/ZOOrk.dir/SweepLeavesCommand.cpp.obj CMakeFiles/ZOOrk.dir/Door.cpp.obj CMakeFiles/ZOOrk.dir/UnlockDoorCommand.cpp.obj CMakeFiles/ZOOrk.dir/SetFireCommand.cpp.obj CMakeFiles/ZOOrk.dir/LightUpCommand.cpp.obj
+build ZOOrk.exe: CXX_EXECUTABLE_LINKER__ZOOrk_Debug CMakeFiles/ZOOrk.dir/main.cpp.obj CMakeFiles/ZOOrk.dir/Item.cpp.obj CMakeFiles/ZOOrk.dir/Character.cpp.obj CMakeFiles/ZOOrk.dir/Location.cpp.obj CMakeFiles/ZOOrk.dir/GameObject.cpp.obj CMakeFiles/ZOOrk.dir/Room.cpp.obj CMakeFiles/ZOOrk.dir/Passage.cpp.obj CMakeFiles/ZOOrk.dir/NullRoom.cpp.obj CMakeFiles/ZOOrk.dir/NullCommand.cpp.obj CMakeFiles/ZOOrk.dir/Player.cpp.obj CMakeFiles/ZOOrk.dir/RoomDefaultEnterCommand.cpp.obj CMakeFiles/ZOOrk.dir/ZOOrkEngine.cpp.obj CMakeFiles/ZOOrk.dir/PassageDefaultEnterCommand.cpp.obj CMakeFiles/ZOOrk.dir/NullPassage.cpp.obj CMakeFiles/ZOOrk.dir/SweepLeavesCommand.cpp.obj CMakeFiles/ZOOrk.dir/Door.cpp.obj CMakeFiles/ZOOrk.dir/UnlockDoorCommand.cpp.obj CMakeFiles/ZOOrk.dir/SetFireCommand.cpp.obj CMakeFiles/ZOOrk.dir/LightUpCommand.cpp.obj CMakeFiles/ZOOrk.dir/PlayPianoCommand.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\ZOOrk.dir

@@ -58,6 +58,10 @@ void ZOOrkEngine::run()
         {
             handleUseCommand(arguments);
         }
+        else if (command == "interact" || command == "f")
+        {
+            handleInteractCommand(arguments[0]);
+        }
         else if (command == "help" || command == "h")
         {
             std::cout << "Available commands:\n"
@@ -66,16 +70,17 @@ void ZOOrkEngine::run()
                 "look/l [item] - Look at an item\n"
                 "take/t [item] - Take an item\n"
                 "drop/d [item] - Drop an item\n"
-                "inventory/i - View your inventory\n"
                 "use/u [item] - Use an item\n"
+                "interact/f [item] - Interact with an item\n"
+                "inventory/i - View your inventory\n"
                 "quit/q - Quit the game\n\n";
         }
         else
         {
-            std::cout << "I don't understand that command.\n";
+            std::cout << "I don't understand that command.\n\n";
         }
 
-        // TODO: might delete this
+        // First time when the player enters the house, close the door
         if (player->getCurrentRoom()->getName() == "foyer" && !firstEnter)
         {
             std::cout << "The door behind you suddenly closes. You realize you are trapped inside this creepy place!\n"
@@ -87,6 +92,12 @@ void ZOOrkEngine::run()
 
 void ZOOrkEngine::handleGoCommand(const std::vector<std::string>& arguments) const
 {
+    if (!Player::hasItem("oil-lamp") && player->getCurrentRoom()->getName() != "front-yard")
+    {
+        std::cout << "It's too dark to see anything. You need a light source.\n\n";
+        return;
+    }
+
     std::string direction;
     if (arguments[0] == "n" || arguments[0] == "north")
     {
@@ -248,7 +259,7 @@ void ZOOrkEngine::handleUseCommand(const std::vector<std::string>& arguments)
 {
     if (arguments.empty())
     {
-        std::cout << "What do you want to interact with?\n";
+        std::cout << "What do you want to use?\n";
     }
     else
     {
@@ -268,6 +279,26 @@ void ZOOrkEngine::handleUseCommand(const std::vector<std::string>& arguments)
             {
                 std::cout << "You don't have that item in your inventory.\n";
             }
+        }
+        std::cout << std::endl;
+    }
+}
+
+void ZOOrkEngine::handleInteractCommand(const std::string& arg) const
+{
+    if (arg.empty())
+    {
+        std::cout << "What do you want to interact with?\n";
+    }
+    else
+    {
+        if (Item* item = player->getCurrentRoom()->getItem(arg); item != nullptr)
+        {
+            item->use();
+        }
+        else
+        {
+            std::cout << "I don't see that here.\n";
         }
         std::cout << std::endl;
     }

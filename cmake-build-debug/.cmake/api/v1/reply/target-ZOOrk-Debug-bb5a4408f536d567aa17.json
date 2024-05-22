@@ -70,7 +70,8 @@
 				31,
 				33,
 				35,
-				37
+				37,
+				38
 			]
 		}
 	],
@@ -125,7 +126,8 @@
 				31,
 				33,
 				35,
-				37
+				37,
+				38
 			]
 		},
 		{
@@ -150,7 +152,8 @@
 				30,
 				32,
 				34,
-				36
+				36,
+				39
 			]
 		}
 	],
@@ -364,6 +367,17 @@
 			"compileGroupIndex" : 0,
 			"path" : "LightUpCommand.cpp",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "PlayPianoCommand.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "PlayPianoCommand.h",
+			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"
