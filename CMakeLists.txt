@@ -15,4 +15,22 @@ add_executable(ZOOrk main.cpp Item.h Command.h Item.cpp Character.cpp Character.
         LightUpCommand.h
         LightUpCommand.cpp
         PlayPianoCommand.cpp
-        PlayPianoCommand.h)
+        PlayPianoCommand.h
+        ClearWaterCommand.cpp
+        ClearWaterCommand.h
+        InstallClockHandCommand.cpp
+        InstallClockHandCommand.h
+        RemoveStitchesCommand.cpp
+        RemoveStitchesCommand.h
+        LieDownCommand.cpp
+        LieDownCommand.h
+        UnlockChestCommand.cpp
+        UnlockChestCommand.h
+        OpenDrawerCommand.cpp
+        OpenDrawerCommand.h
+        InsertLetterCommand.cpp
+        InsertLetterCommand.h
+        Bookshelf.cpp
+        Bookshelf.h
+        RearrangeBookCommand.cpp
+        RearrangeBookCommand.h)

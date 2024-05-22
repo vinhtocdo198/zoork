@@ -31,7 +31,7 @@ private:
 
     void handleDropCommand(const std::vector<std::string>&) const;
 
-    void handleInteractCommand(const std::string&) const;
+    void handleInteractCommand(const std::vector<std::string>&) const;
 
     static void handleUseCommand(const std::vector<std::string>&);
 

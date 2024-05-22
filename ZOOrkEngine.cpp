@@ -22,7 +22,6 @@ void ZOOrkEngine::run()
     while (!gameOver)
     {
         std::cout << "> ";
-
         std::string input;
         std::getline(std::cin, input);
 
@@ -60,7 +59,7 @@ void ZOOrkEngine::run()
         }
         else if (command == "interact" || command == "f")
         {
-            handleInteractCommand(arguments[0]);
+            handleInteractCommand(arguments);
         }
         else if (command == "help" || command == "h")
         {
@@ -70,8 +69,8 @@ void ZOOrkEngine::run()
                 "look/l [item] - Look at an item\n"
                 "take/t [item] - Take an item\n"
                 "drop/d [item] - Drop an item\n"
-                "use/u [item] - Use an item\n"
-                "interact/f [item] - Interact with an item\n"
+                "use/u [item] - Use an item in your inventory\n"
+                "interact/f [item] - Interact with an object\n"
                 "inventory/i - View your inventory\n"
                 "quit/q - Quit the game\n\n";
         }
@@ -163,7 +162,7 @@ void ZOOrkEngine::handleTakeCommand(const std::vector<std::string>& arguments) c
     // TODO: To be implemented
     if (arguments.empty())
     {
-        std::cout << "What do you want to take?\n";
+        std::cout << "What do you want to take?\n\n";
     }
     else
     {
@@ -171,21 +170,42 @@ void ZOOrkEngine::handleTakeCommand(const std::vector<std::string>& arguments) c
         {
             if (const Item* item = player->getCurrentRoom()->getItem(arg); item != nullptr)
             {
+                // Custom responses for specific items
+                if (item->getName() == "knife" && player->getCurrentRoom()->getName() == "laundry-room")
+                {
+                    player->getCurrentRoom()->setDescription(
+                        "You are now in the laundry room. There's nothing other than a [sink] and a\n"
+                        "[washing-machine].\n");
+                }
+                else if ((item->getName() == "d" || item->getName() == "e")
+                    && player->getCurrentRoom()->getName() == "master-bedroom")
+                {
+                    player->getCurrentRoom()->getItem("chest")->setDescription(
+                        "An opened wooden chest.");
+                }
+                else if (item->getName() == "s" && player->getCurrentRoom()->getName() == "bathroom")
+                {
+                    player->getCurrentRoom()->getItem("drawer")->setDescription(
+                        "An opened drawer with some expired items and bandages inside.");
+                }
+
+                // Generic response for all items in the inventory
                 if (item->isObtainable())
                 {
                     Player::takeItem(player->getCurrentRoom()->retrieveItem(item->getName()));
-                    std::cout << "You obtained " << item->getName() << ".\n\n";
+                    std::cout << "You obtained " << item->getName() << ".\n";
                 }
                 else
                 {
-                    std::cout << "You can't take that.\n\n";
+                    std::cout << "You can't take that.\n";
                 }
             }
             else
             {
-                std::cout << "I don't see that here.\n\n";
+                std::cout << "I don't see that here.\n";
             }
         }
+        std::cout << std::endl;
     }
 }
 
@@ -194,7 +214,7 @@ void ZOOrkEngine::handleDropCommand(const std::vector<std::string>& arguments) c
     // TODO: To be implemented
     if (arguments.empty())
     {
-        std::cout << "What do you want to drop?\n";
+        std::cout << "What do you want to drop?\n\n";
     }
     else
     {
@@ -259,7 +279,7 @@ void ZOOrkEngine::handleUseCommand(const std::vector<std::string>& arguments)
 {
     if (arguments.empty())
     {
-        std::cout << "What do you want to use?\n";
+        std::cout << "What do you want to use?\n\n";
     }
     else
     {
@@ -284,24 +304,53 @@ void ZOOrkEngine::handleUseCommand(const std::vector<std::string>& arguments)
     }
 }
 
-void ZOOrkEngine::handleInteractCommand(const std::string& arg) const
+void ZOOrkEngine::handleInteractCommand(const std::vector<std::string>& arguments) const
 {
-    if (arg.empty())
+    if (arguments.empty())
     {
-        std::cout << "What do you want to interact with?\n";
+        std::cout << "What do you want to interact with?\n\n";
     }
     else
     {
-        if (Item* item = player->getCurrentRoom()->getItem(arg); item != nullptr)
+        for (const auto& arg : arguments)
         {
-            item->use();
-        }
-        else
-        {
-            std::cout << "I don't see that here.\n";
+            if (Item* item = player->getCurrentRoom()->getItem(arg); item != nullptr)
+            {
+                if (item->isInteractive())
+                {
+                    item->use();
+                }
+                else
+                {
+                    std::cout << "Nothing happens.\n";
+                }
+            }
+            else
+            {
+                std::cout << "I don't see that here.\n";
+            }
         }
         std::cout << std::endl;
     }
+    // else
+    // {
+    //     if (Item* item = player->getCurrentRoom()->getItem(arg); item != nullptr)
+    //     {
+    //         if (item->isInteractive())
+    //         {
+    //             item->use();
+    //         }
+    //         else
+    //         {
+    //             std::cout << "Nothing happens.\n";
+    //         }
+    //     }
+    //     else
+    //     {
+    //         std::cout << "I don't see that here.\n";
+    //     }
+    //     std::cout << std::endl;
+    // }
 }
 
 std::vector<std::string> ZOOrkEngine::tokenizeString(const std::string& input)

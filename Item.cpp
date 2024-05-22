@@ -6,13 +6,13 @@
 #include "NullCommand.h"
 #include <utility>
 
-Item::Item(const std::string& n, const std::string& d, const bool obtainable)
-    : GameObject(n, d), obtainable(obtainable), useCommand(std::make_shared<NullCommand>())
+Item::Item(const std::string& n, const std::string& d, const bool o, const bool i)
+    : GameObject(n, d), obtainable(o), interactive(i), useCommand(std::make_shared<NullCommand>())
 {
 }
 
-Item::Item(const std::string& n, const std::string& d, const bool obtainable, std::shared_ptr<Command> c)
-    : GameObject(n, d), obtainable(obtainable), useCommand(std::move(c))
+Item::Item(const std::string& n, const std::string& d, const bool o, const bool i, std::shared_ptr<Command> c)
+    : GameObject(n, d), obtainable(o), interactive(i), useCommand(std::move(c))
 {
 }
 
@@ -29,6 +29,16 @@ bool Item::isObtainable() const
 void Item::setObtainable(const bool o)
 {
     obtainable = o;
+}
+
+bool Item::isInteractive() const
+{
+    return interactive;
+}
+
+void Item::setInteractive(const bool i)
+{
+    interactive = i;
 }
 
 void Item::setUseCommand(std::shared_ptr<Command> c)

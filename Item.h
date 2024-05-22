@@ -14,9 +14,9 @@ class Item : public GameObject
 public:
     virtual ~Item() = default;
 
-    Item(const std::string&, const std::string&, bool);
+    Item(const std::string&, const std::string&, bool, bool);
 
-    Item(const std::string&, const std::string&, bool, std::shared_ptr<Command>);
+    Item(const std::string&, const std::string&, bool, bool, std::shared_ptr<Command>);
 
     virtual void use();
 
@@ -24,10 +24,17 @@ public:
 
     void setObtainable(bool);
 
+    bool isInteractive() const;
+
+    void setInteractive(bool);
+
     void setUseCommand(std::shared_ptr<Command>);
+
+// TODO: add usable
 
 protected:
     bool obtainable;
+    bool interactive;
     bool inUse = false;
     std::shared_ptr<Command> useCommand;
 };
