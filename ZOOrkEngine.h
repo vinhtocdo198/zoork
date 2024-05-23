@@ -18,6 +18,8 @@ public:
 
     void run();
 
+    // void setGameOver() const;
+
 private:
     bool gameOver = false;
 
@@ -33,7 +35,7 @@ private:
 
     void handleDropCommand(const std::vector<std::string>&) const;
 
-    void handleInteractCommand(const std::vector<std::string>&) const;
+    void handleInteractCommand(const std::vector<std::string>&);
 
     static void handleUseCommand(const std::vector<std::string>&);
 

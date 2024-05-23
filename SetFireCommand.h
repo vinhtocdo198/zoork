@@ -11,15 +11,18 @@
 class SetFireCommand : public Command
 {
 public:
-    explicit SetFireCommand(Item* l, Item* o) : Command(l), lighter(l), oil_lamp(o)
+    explicit SetFireCommand(Item* o, Room* f, Room* lv, Room* p)
+        : Command(o), oil_lamp(o), foyer(f), living_room(lv), piano(p)
     {
     }
 
     void execute() override;
 
 private:
-    Item* lighter;
     Item* oil_lamp;
+    Room* foyer;
+    Room* living_room;
+    Room* piano;
 };
 
 #endif //USEDURABLEITEMCOMMAND_H

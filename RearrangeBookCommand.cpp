@@ -24,14 +24,14 @@ void RearrangeBookCommand::execute()
             break;
         }
 
-        if (keyword == "cse3psd")
+        if (keyword == "monalisa")
         {
             std::cout << "Smash! The sound comes from downstairs.\n";
             activated = true;
         }
         else
         {
-            std::cout << "Incorrect keyword.\n";
+            std::cout << "Nothing happens.\n";
         }
     }
 

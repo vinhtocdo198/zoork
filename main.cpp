@@ -6,6 +6,7 @@
 #include "Bookshelf.h"
 #include "ClearWaterCommand.h"
 #include "Door.h"
+#include "EscapeCommand.h"
 #include "InsertLetterCommand.h"
 #include "InstallClockHandCommand.h"
 #include "LieDownCommand.h"
@@ -17,6 +18,7 @@
 #include "SweepLeavesCommand.h"
 #include "UnlockDoorCommand.h"
 #include "SetFireCommand.h"
+#include "WearRingCommand.h"
 
 int main()
 {
@@ -62,7 +64,7 @@ int main()
                                               false);
     const auto painting = std::make_shared<Item>("painting", "A replica of the Mona Lisa painting.", false, false);
     const auto hole = std::make_shared<Item>("hole",
-                                             "A small hole in the wall, and the sun inside?... No it's a sparky [ring].",
+                                             "A small hole in the wall, and the sun inside?... No, it's a sparky [ring]!",
                                              false, false);
     const auto ring = std::make_shared<Item>("ring",
                                              "A charming, flawless, intricate, exotic, gorgeous, sexy,... ring. This is it!",
@@ -89,11 +91,11 @@ int main()
     const auto oil_lamp = std::make_shared<Item>("oil-lamp", "An old-fashioned oil lamp. Must be a hundred years old.",
                                                  false, false);
     foyer->addItem(oil_lamp.get());
-    const auto set_fire_command = std::make_shared<SetFireCommand>(lighter.get(), oil_lamp.get());
+    const auto set_fire_command = std::make_shared<SetFireCommand>(oil_lamp.get(), foyer.get(),
+                                                                   living_room.get(), hallway.get());
     lighter->setUseCommand(set_fire_command);
 
-    const auto light_up_command = std::make_shared<LightUpCommand>(oil_lamp.get(), foyer.get(),
-                                                                   living_room.get(), hallway.get());
+    const auto light_up_command = std::make_shared<LightUpCommand>(oil_lamp.get());
     oil_lamp->setUseCommand(light_up_command);
 
     const auto kitchen = std::make_shared<Room>("kitchen",
@@ -109,10 +111,17 @@ int main()
                                              "A sticky note, edges curling with age. There is ugly handwriting on it:\n"
                                              "Bla bla bla", true, false); // TODO:
     const auto stove = std::make_shared<Item>("stove", "An old stove.", false, false);
+    const auto tunnel = std::make_shared<Item>("tunnel", "A dark, mysterious tunnel. It might be my way out!", false,
+                                               true);
     kitchen->addItem(dining_table.get());
     kitchen->addItem(fridge.get());
     kitchen->addItem(note.get());
     kitchen->addItem(stove.get());
+    kitchen->addItem(tunnel.get());
+    const auto wear_ring_command = std::make_shared<WearRingCommand>(kitchen.get());
+    ring->setUseCommand(wear_ring_command);
+    const auto escape_command = std::make_shared<EscapeCommand>(tunnel.get());
+    tunnel->setUseCommand(escape_command);
 
     const auto laundry_room = std::make_shared<Room>("laundry-room",
                                                      "You are now in the laundry room. There's nothing other than a [sink] and a\n"
@@ -141,12 +150,12 @@ int main()
     const auto bed = std::make_shared<Item>("bed", "A huge bed with an ornate headboard.", false, true);
     const auto chest = std::make_shared<Item>("chest", "A wooden chest, secured with a sturdy combination lock.", false,
                                               true);
-    const auto e = std::make_shared<Item>("e", "A wooden piece of letter E.", true, false);
-    const auto d = std::make_shared<Item>("d", "A wooden piece of letter D.", true, false);
+    const auto i = std::make_shared<Item>("i", "A wooden piece of letter I.", true, false);
+    const auto l = std::make_shared<Item>("l", "A wooden piece of letter L.", true, false);
     master_bedroom->addItem(bed.get());
     master_bedroom->addItem(chest.get());
-    master_bedroom->addItem(e.get());
-    master_bedroom->addItem(d.get());
+    master_bedroom->addItem(i.get());
+    master_bedroom->addItem(l.get());
     bed->setUseCommand(lie_down_command);
     const auto unlock_chest_command = std::make_shared<UnlockChestCommand>(chest.get());
     chest->setUseCommand(unlock_chest_command);
@@ -161,8 +170,8 @@ int main()
                                                        "A bookshelf, filled with children's books. The top shelf stands out: it holds seven books,\n"
                                                        "with some of them displaying wooden letters on their spines. The others have their spines\n"
                                                        "curved inward, also in the shape of letters. Current letters on the books are:\n"
-                                                       "3, s, p, c", false, false,
-                                                       std::vector<std::string>{"3", "s", "p", "c"});
+                                                       "n, o, a, s, m", false, false,
+                                                       std::vector<std::string>{"n", "o", "a", "s", "m"});
     const auto teddy_bear = std::make_shared<Item>("teddy-bear", "A stuffed teddy bear, body covered with stitches.",
                                                    false, false);
     const auto clock_hand = std::make_shared<Item>("clock-hand", "A clock's hand.", true, false);
@@ -177,24 +186,22 @@ int main()
                                                  "in the darkness. Below is a large [bathtub].\n");
     const auto drawer = std::make_shared<Item>("drawer", "A first aid drawer.", false, true);
     const auto bathtub = std::make_shared<Item>("bathtub", "A large bathtub, filled with green moss.", false, true);
-    const auto s = std::make_shared<Item>("s", "A wooden piece of letter S.", true, false);
+    const auto a = std::make_shared<Item>("a", "A wooden piece of letter A.", true, false);
     bathroom->addItem(drawer.get());
     bathroom->addItem(bathtub.get());
-    bathroom->addItem(s.get());
+    bathroom->addItem(a.get());
     const auto open_drawer_command = std::make_shared<OpenDrawerCommand>(drawer.get());
     drawer->setUseCommand(open_drawer_command);
     bathtub->setUseCommand(lie_down_command);
 
-    const auto insert_letter_command1 = std::make_shared<InsertLetterCommand>(s.get());
-    s->setUseCommand(insert_letter_command1);
-    const auto insert_letter_command2 = std::make_shared<InsertLetterCommand>(e.get());
-    e->setUseCommand(insert_letter_command2);
-    const auto insert_letter_command3 = std::make_shared<InsertLetterCommand>(d.get());
-    d->setUseCommand(insert_letter_command3);
+    const auto insert_letter_command1 = std::make_shared<InsertLetterCommand>(a.get());
+    a->setUseCommand(insert_letter_command1);
+    const auto insert_letter_command2 = std::make_shared<InsertLetterCommand>(i.get());
+    i->setUseCommand(insert_letter_command2);
+    const auto insert_letter_command3 = std::make_shared<InsertLetterCommand>(l.get());
+    l->setUseCommand(insert_letter_command3);
     const auto rearrange_book_command = std::make_shared<RearrangeBookCommand>(bookshelf.get(), living_room.get());
     bookshelf->setUseCommand(rearrange_book_command);
-
-    // TODO: what happens after getting the ring? front door opens and house is crumbling
 
     // 1st floor passages
     Passage::createBasicPassage(living_room.get(), kitchen.get(), "north", true);

@@ -33,4 +33,8 @@ add_executable(ZOOrk main.cpp Item.h Command.h Item.cpp Character.cpp Character.
         Bookshelf.cpp
         Bookshelf.h
         RearrangeBookCommand.cpp
-        RearrangeBookCommand.h)
+        RearrangeBookCommand.h
+        WearRingCommand.cpp
+        WearRingCommand.h
+        EscapeCommand.cpp
+        EscapeCommand.h)

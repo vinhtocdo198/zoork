@@ -9,5 +9,5 @@ void OpenDrawerCommand::execute()
 {
     std::cout << "You open the drawer.\n";
     drawer->setDescription("An opened drawer with some expired items, bandages, and a wooden piece\n"
-        "of alphabetical letter [s] inside.");
+        "of alphabetical letter [a] inside.");
 }

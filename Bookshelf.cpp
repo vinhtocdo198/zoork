@@ -19,7 +19,7 @@ Bookshelf::Bookshelf(const std::string& n, const std::string& d, const bool a, c
 
 bool Bookshelf::checkLetters() const
 {
-    return letters.size() == 7;
+    return letters.size() == 8;
 }
 
 void Bookshelf::addLetters(const std::string& lName)

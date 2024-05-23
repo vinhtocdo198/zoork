@@ -30,12 +30,13 @@ void UnlockChestCommand::execute()
         }
         else
         {
-            std::cout << "Incorrect passcode.\n";
+            std::cout << "Nothing happens.\n";
         }
     }
     if (!locked)
     {
         chest->setInteractive(false);
-        chest->setDescription("An opened wooden chest, inside are two wooden pieces of alphabetical letters: [e] and [d].");
+        chest->setDescription(
+            "An opened wooden chest, inside are two wooden pieces of alphabetical letters: [i] and [l].");
     }
 }
