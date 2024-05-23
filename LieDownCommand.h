@@ -10,14 +10,11 @@
 class LieDownCommand : public Command
 {
 public:
-    explicit LieDownCommand(Item* b) : Command(b), bed(b)
+    explicit LieDownCommand(Item* i) : Command(i)
     {
     }
 
     void execute() override;
-
-private:
-    Item* bed;
 };
 
 #endif //LIEDOWNCOMMAND_H

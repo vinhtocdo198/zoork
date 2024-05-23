@@ -35,7 +35,7 @@ void Player::dropItem(const std::string& itemName)
     }
 }
 
-Item* Player::hasItem(const std::string& itemName)
+Item* Player::getItem(const std::string& itemName)
 {
     for (const auto& item : inventory)
     {

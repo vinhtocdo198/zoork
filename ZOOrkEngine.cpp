@@ -25,6 +25,13 @@ void ZOOrkEngine::run()
         std::string input;
         std::getline(std::cin, input);
 
+        // Handle empty input
+        if (input.empty())
+        {
+            std::cout << "Please enter a command.\n\n";
+            continue;
+        }
+
         std::vector<std::string> words = tokenizeString(input);
         std::string command = words[0];
         const auto arguments = std::vector(words.begin() + 1, words.end());
@@ -91,7 +98,7 @@ void ZOOrkEngine::run()
 
 void ZOOrkEngine::handleGoCommand(const std::vector<std::string>& arguments) const
 {
-    if (!Player::hasItem("oil-lamp") && player->getCurrentRoom()->getName() != "front-yard")
+    if (!Player::getItem("oil-lamp") && player->getCurrentRoom()->getName() != "front-yard")
     {
         std::cout << "It's too dark to see anything. You need a light source.\n\n";
         return;
@@ -135,7 +142,6 @@ void ZOOrkEngine::handleGoCommand(const std::vector<std::string>& arguments) con
 
 void ZOOrkEngine::handleLookCommand(const std::vector<std::string>& arguments) const
 {
-    // TODO: To be implemented
     if (arguments.empty())
     {
         std::cout << player->getCurrentRoom()->getDescription() << std::endl;
@@ -144,9 +150,13 @@ void ZOOrkEngine::handleLookCommand(const std::vector<std::string>& arguments) c
     {
         for (const auto& arg : arguments)
         {
-            if (const Item* item = player->getCurrentRoom()->getItem(arg); item != nullptr)
+            if (const Item* roomItem = player->getCurrentRoom()->getItem(arg); roomItem != nullptr)
             {
-                std::cout << item->getDescription() << std::endl;
+                std::cout << roomItem->getDescription() << std::endl;
+            }
+            else if (const Item* invItem = Player::getItem(arg); invItem != nullptr)
+            {
+                std::cout << invItem->getDescription() << std::endl;
             }
             else
             {
@@ -159,7 +169,6 @@ void ZOOrkEngine::handleLookCommand(const std::vector<std::string>& arguments) c
 
 void ZOOrkEngine::handleTakeCommand(const std::vector<std::string>& arguments) const
 {
-    // TODO: To be implemented
     if (arguments.empty())
     {
         std::cout << "What do you want to take?\n\n";
@@ -188,6 +197,10 @@ void ZOOrkEngine::handleTakeCommand(const std::vector<std::string>& arguments) c
                     player->getCurrentRoom()->getItem("drawer")->setDescription(
                         "An opened drawer with some expired items and bandages inside.");
                 }
+                else if (item->getName() == "note" && player->getCurrentRoom()->getName() == "kitchen")
+                {
+                    player->getCurrentRoom()->getItem("fridge")->setDescription("A grimy fridge.");
+                }
 
                 // Generic response for all items in the inventory
                 if (item->isObtainable())
@@ -211,7 +224,6 @@ void ZOOrkEngine::handleTakeCommand(const std::vector<std::string>& arguments) c
 
 void ZOOrkEngine::handleDropCommand(const std::vector<std::string>& arguments) const
 {
-    // TODO: To be implemented
     if (arguments.empty())
     {
         std::cout << "What do you want to drop?\n\n";

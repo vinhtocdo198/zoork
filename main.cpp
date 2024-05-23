@@ -12,6 +12,7 @@
 #include "LightUpCommand.h"
 #include "OpenDrawerCommand.h"
 #include "PlayPianoCommand.h"
+#include "RearrangeBookCommand.h"
 #include "RemoveStitchesCommand.h"
 #include "SweepLeavesCommand.h"
 #include "UnlockDoorCommand.h"
@@ -25,14 +26,12 @@ int main()
         "chills down your spine. Do you dare to take this challenge?\n"
         "Type help/h for available commands.\n\n";
 
-    // TODO: ask for obtainable items?
-
     // Front yard
     const auto front_yard = std::make_shared<Room>("front-yard",
                                                    "You are standing in a lawn south of the manor, under the heavy rain. All windows\n"
                                                    "are barred. There is a rusty lock on the front door, and a [broom] lying on the\n"
                                                    "floor. A [leaf-pile] is on your left, in front of the windows.\n");
-    const auto front_key = std::make_shared<Item>("front-key", "A small, rusty key.", true, false);
+    const auto front_key = std::make_shared<Item>("front-key", "A cute key.", true, false);
     const auto lighter = std::make_shared<Item>("lighter", "A lighter, small and convenient.", true, false);
     const auto leaf_pile = std::make_shared<Item>("leaf-pile", "A very normal pile of leaves.", false, false);
     const auto broom = std::make_shared<Item>("broom", "An old broom.", true, false);
@@ -55,17 +54,27 @@ int main()
 
     const auto living_room = std::make_shared<Room>("living-room",
                                                     "You are now in the living room. A corridor leads to the kitchen to the north.\n"
-                                                    "An worn-out [sofa] is in the middle, facing a vintage [TV]. Above the TV, a [clock]\n"
+                                                    "A worn-out [sofa] is in the middle, facing a vintage [TV]. Above the TV, a [clock]\n"
                                                     "and a Mona Lisa [painting] are hung on the wall.\n");
     const auto sofa = std::make_shared<Item>("sofa", "An old, worn-out sofa.", false, true);
     const auto tv = std::make_shared<Item>("tv", "A vintage TV.", false, true);
     const auto clock = std::make_shared<Item>("clock", "A cuckoo clock mounted on the wall, missing a hand.", false,
                                               false);
     const auto painting = std::make_shared<Item>("painting", "A replica of the Mona Lisa painting.", false, false);
+    const auto hole = std::make_shared<Item>("hole",
+                                             "A small hole in the wall, and the sun inside?... No it's a sparky [ring].",
+                                             false, false);
+    const auto ring = std::make_shared<Item>("ring",
+                                             "A charming, flawless, intricate, exotic, gorgeous, sexy,... ring. This is it!",
+                                             true, false);
     living_room->addItem(sofa.get());
     living_room->addItem(tv.get());
     living_room->addItem(clock.get());
     living_room->addItem(painting.get());
+    living_room->addItem(hole.get());
+    living_room->addItem(ring.get());
+    const auto lie_down_command = std::make_shared<LieDownCommand>(sofa.get());
+    sofa->setUseCommand(lie_down_command);
 
     const auto hallway = std::make_shared<Room>("hallway",
                                                 "You are now in the hallway. A huge [piano] appears before your eyes.\n"
@@ -94,10 +103,15 @@ int main()
     const auto dining_table = std::make_shared<Item>("dining-table",
                                                      "A dining table, but I wouldn't sit here to enjoy my meals.",
                                                      false, false);
-    const auto fridge = std::make_shared<Item>("fridge", "A grimy fridge.", false, true); // TODO: open fridge
+    const auto fridge = std::make_shared<Item>("fridge", "A grimy fridge, with a [note] clinging to the door.",
+                                               false, false);
+    const auto note = std::make_shared<Item>("note",
+                                             "A sticky note, edges curling with age. There is ugly handwriting on it:\n"
+                                             "Bla bla bla", true, false); // TODO:
     const auto stove = std::make_shared<Item>("stove", "An old stove.", false, false);
     kitchen->addItem(dining_table.get());
     kitchen->addItem(fridge.get());
+    kitchen->addItem(note.get());
     kitchen->addItem(stove.get());
 
     const auto laundry_room = std::make_shared<Room>("laundry-room",
@@ -133,7 +147,6 @@ int main()
     master_bedroom->addItem(chest.get());
     master_bedroom->addItem(e.get());
     master_bedroom->addItem(d.get());
-    const auto lie_down_command = std::make_shared<LieDownCommand>(bed.get());
     bed->setUseCommand(lie_down_command);
     const auto unlock_chest_command = std::make_shared<UnlockChestCommand>(chest.get());
     chest->setUseCommand(unlock_chest_command);
@@ -146,7 +159,7 @@ int main()
                                                     "There is a [bookshelf] on the left and a big [teddy-bear] sitting on the bed.\n");
     const auto bookshelf = std::make_shared<Bookshelf>("bookshelf",
                                                        "A bookshelf, filled with children's books. The top shelf stands out: it holds seven books,\n"
-                                                       "with some of them displaying wooden letters on their spines. The other have their spines\n"
+                                                       "with some of them displaying wooden letters on their spines. The others have their spines\n"
                                                        "curved inward, also in the shape of letters. Current letters on the books are:\n"
                                                        "3, s, p, c", false, false,
                                                        std::vector<std::string>{"3", "s", "p", "c"});
@@ -178,6 +191,10 @@ int main()
     e->setUseCommand(insert_letter_command2);
     const auto insert_letter_command3 = std::make_shared<InsertLetterCommand>(d.get());
     d->setUseCommand(insert_letter_command3);
+    const auto rearrange_book_command = std::make_shared<RearrangeBookCommand>(bookshelf.get(), living_room.get());
+    bookshelf->setUseCommand(rearrange_book_command);
+
+    // TODO: what happens after getting the ring? front door opens and house is crumbling
 
     // 1st floor passages
     Passage::createBasicPassage(living_room.get(), kitchen.get(), "north", true);

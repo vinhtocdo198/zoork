@@ -20,7 +20,9 @@ public:
 
 private:
     bool gameOver = false;
+
     Player* player;
+
     bool firstEnter = false;
 
     void handleGoCommand(const std::vector<std::string>&) const;
