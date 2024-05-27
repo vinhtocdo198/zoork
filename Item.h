@@ -7,7 +7,6 @@
 
 #include "Command.h"
 #include "GameObject.h"
-#include <memory>
 
 class Item : public GameObject
 {
@@ -29,8 +28,6 @@ public:
     void setInteractive(bool);
 
     void setUseCommand(std::shared_ptr<Command>);
-
-// TODO: add usable
 
 protected:
     bool obtainable;

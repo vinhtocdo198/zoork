@@ -1,8 +1,6 @@
 #include "Passage.h"
 #include "Room.h"
 #include "ZOOrkEngine.h"
-#include <memory>
-
 #include "Bookshelf.h"
 #include "ClearWaterCommand.h"
 #include "Door.h"
@@ -109,7 +107,8 @@ int main()
                                                false, false);
     const auto note = std::make_shared<Item>("note",
                                              "A sticky note, edges curling with age. There is ugly handwriting on it:\n"
-                                             "Bla bla bla", true, false); // TODO:
+                                             "\"Remember to do your homework, my dear Emily. Mommy loves you.\"",
+                                             true, false);
     const auto stove = std::make_shared<Item>("stove", "An old stove.", false, false);
     const auto tunnel = std::make_shared<Item>("tunnel", "A dark, mysterious tunnel. It might be my way out!", false,
                                                true);

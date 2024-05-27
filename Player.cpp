@@ -3,7 +3,6 @@
 //
 
 #include "Player.h"
-#include <iostream>
 
 Player* Player::playerInstance = nullptr;
 std::vector<Item*> Player::inventory;

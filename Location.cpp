@@ -3,6 +3,7 @@
 //
 
 #include "Location.h"
+#include "NullCommand.h"
 
 Location::Location(const std::string& n, const std::string& d)
     : GameObject(n, d),

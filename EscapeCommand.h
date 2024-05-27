@@ -4,6 +4,7 @@
 
 #ifndef ESCAPECOMMAND_H
 #define ESCAPECOMMAND_H
+
 #include "Command.h"
 #include "Item.h"
 

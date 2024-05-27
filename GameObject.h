@@ -5,12 +5,13 @@
 #ifndef ZOORK_GAMEOBJECT_H
 #define ZOORK_GAMEOBJECT_H
 
-#include <string>
+#include <memory>
+#include <iostream>
 
 class GameObject
 {
 public:
-    GameObject(std::string , std::string );
+    GameObject(std::string, std::string);
 
     std::string getName() const;
 

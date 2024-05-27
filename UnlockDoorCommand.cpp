@@ -3,7 +3,6 @@
 //
 
 #include "UnlockDoorCommand.h"
-
 #include "Player.h"
 
 void UnlockDoorCommand::execute()

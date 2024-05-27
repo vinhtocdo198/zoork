@@ -4,10 +4,9 @@
 
 #ifndef SWEEPLEAVESCOMMAND_H
 #define SWEEPLEAVESCOMMAND_H
-#include <memory>
+
 #include "Room.h"
 #include "Command.h"
-#include "Door.h"
 
 class SweepLeavesCommand : public Command
 {

@@ -8,8 +8,6 @@
 #include "Player.h"
 #include "Location.h"
 #include "Passage.h"
-#include <string>
-#include <vector>
 
 class ZOOrkEngine
 {

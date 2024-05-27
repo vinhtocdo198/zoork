@@ -4,7 +4,6 @@
 
 #include "SetFireCommand.h"
 #include "Passage.h"
-#include <iostream>
 #include "Player.h"
 
 void SetFireCommand::execute()

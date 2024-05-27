@@ -3,8 +3,6 @@
 //
 
 #include "SweepLeavesCommand.h"
-#include <iostream>
-
 #include "Player.h"
 #include "UnlockDoorCommand.h"
 

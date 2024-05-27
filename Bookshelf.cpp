@@ -3,8 +3,6 @@
 //
 
 #include "Bookshelf.h"
-#include <iostream>
-#include <utility>
 
 Bookshelf::Bookshelf(const std::string& n, const std::string& d, const bool a, const bool s, std::vector<std::string> l)
     : Item(n, d, a, s), letters(std::move(l))

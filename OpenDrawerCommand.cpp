@@ -3,7 +3,6 @@
 //
 
 #include "OpenDrawerCommand.h"
-#include <iostream>
 
 void OpenDrawerCommand::execute()
 {

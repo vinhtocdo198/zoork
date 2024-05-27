@@ -4,6 +4,7 @@
 
 #ifndef OPENCHESTCOMMAND_H
 #define OPENCHESTCOMMAND_H
+
 #include "Item.h"
 
 class UnlockChestCommand : public Command

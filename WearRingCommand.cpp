@@ -3,11 +3,9 @@
 //
 
 #include "WearRingCommand.h"
-#include <iostream>
 
 void WearRingCommand::execute()
 {
-    // TODO: disable use?
     std::cout << "You wear the ring. Suddenly, a loud noise echoes from the kitchen, shaking the walls around you.\n";
     kitchen->setDescription(
         "You are now in the kitchen. It is a total mess, with a [dining-table] covered in\n"

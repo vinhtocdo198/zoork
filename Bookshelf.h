@@ -4,9 +4,9 @@
 
 #ifndef BOOKSHELF_H
 #define BOOKSHELF_H
-#include <vector>
 
 #include "Item.h"
+#include <vector>
 
 class Bookshelf : public Item
 {

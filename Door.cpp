@@ -4,8 +4,6 @@
 
 #include "Door.h"
 
-#include <utility>
-
 Door::Door(const std::string& n, const std::string& d, Room* from, Room* to, const bool locked)
     : Passage(n, d, from, to), locked(locked)
 {

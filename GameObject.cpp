@@ -3,8 +3,6 @@
 //
 
 #include "GameObject.h"
-#include <iostream>
-#include <utility>
 
 GameObject::GameObject(std::string n, std::string d) : name(std::move(n)), description(std::move(d))
 {

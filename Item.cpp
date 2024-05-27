@@ -4,7 +4,6 @@
 
 #include "Item.h"
 #include "NullCommand.h"
-#include <utility>
 
 Item::Item(const std::string& n, const std::string& d, const bool o, const bool i)
     : GameObject(n, d), obtainable(o), interactive(i), useCommand(std::make_shared<NullCommand>())

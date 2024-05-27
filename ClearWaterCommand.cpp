@@ -3,7 +3,6 @@
 //
 
 #include "ClearWaterCommand.h"
-#include <iostream>
 
 void ClearWaterCommand::execute()
 {

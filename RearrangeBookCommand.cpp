@@ -4,7 +4,6 @@
 
 #include "RearrangeBookCommand.h"
 #include "Player.h"
-#include <iostream>
 
 void RearrangeBookCommand::execute()
 {

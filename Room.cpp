@@ -3,8 +3,8 @@
 //
 
 #include "NullPassage.h"
+#include "RoomDefaultEnterCommand.h"
 #include "Room.h"
-#include <utility>
 
 Room::Room(const std::string& n, const std::string& d) : Location(n, d)
 {

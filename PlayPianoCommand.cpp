@@ -5,7 +5,6 @@
 #include "PlayPianoCommand.h"
 #include <random>
 #include <vector>
-#include <iostream>
 
 void PlayPianoCommand::execute()
 {

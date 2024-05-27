@@ -4,6 +4,7 @@
 
 #ifndef DOOR_H
 #define DOOR_H
+
 #include "Passage.h"
 
 class Door : public Passage

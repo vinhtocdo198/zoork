@@ -4,7 +4,6 @@
 
 #include "RemoveStitchesCommand.h"
 #include "Player.h"
-#include <iostream>
 
 void RemoveStitchesCommand::execute()
 {

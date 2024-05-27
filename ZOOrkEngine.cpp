@@ -3,10 +3,7 @@
 //
 
 #include "ZOOrkEngine.h"
-#include <memory>
-#include <utility>
 #include <algorithm>
-#include <iostream>
 #include <sstream>
 #include <ranges>
 
@@ -98,6 +95,12 @@ void ZOOrkEngine::run()
 
 void ZOOrkEngine::handleGoCommand(const std::vector<std::string>& arguments) const
 {
+    if (!Player::getItem("lighter") && player->getCurrentRoom()->getName() == "front-yard")
+    {
+        std::cout << "It looks dark inside. Did I forget something?\n\n";
+        return;
+    }
+
     if (!Player::getItem("oil-lamp") && player->getCurrentRoom()->getName() != "front-yard")
     {
         std::cout << "It's too dark to see anything. You need a light source.\n\n";
@@ -238,18 +241,16 @@ void ZOOrkEngine::handleDropCommand(const std::vector<std::string>& arguments) c
         const auto inventory = Player::getInventory();
         for (const auto& arg : arguments)
         {
-            auto it = std::ranges::find_if(inventory,
-                                           [&arg](const Item* item)
-                                           {
-                                               return item->getName() == arg;
-                                           });
+            auto it = std::ranges::find_if(inventory, [&arg](const Item* item)
+            {
+                return item->getName() == arg;
+            });
             if (it != inventory.end())
             {
                 Item* item = *it;
                 Player::dropItem(arg);
                 player->getCurrentRoom()->addItem(item);
                 std::cout << "You dropped " << item->getName() << ".\n\n";
-                // delete temp;
             }
             else
             {
@@ -303,11 +304,10 @@ void ZOOrkEngine::handleUseCommand(const std::vector<std::string>& arguments)
         for (const auto& arg : arguments)
         {
             const auto inventory = Player::getInventory();
-            auto it = std::ranges::find_if(inventory,
-                                           [&arg](const Item* item)
-                                           {
-                                               return item->getName() == arg;
-                                           });
+            auto it = std::ranges::find_if(inventory, [&arg](const Item* item)
+            {
+                return item->getName() == arg;
+            });
             if (it != inventory.end())
             {
                 (*it)->use();

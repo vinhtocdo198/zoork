@@ -3,7 +3,6 @@
 //
 
 #include "LightUpCommand.h"
-#include <iostream>
 
 void LightUpCommand::execute()
 {

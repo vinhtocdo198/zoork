@@ -6,11 +6,10 @@
 #define ZOORK_ROOM_H
 
 #include "Character.h"
-#include "RoomDefaultEnterCommand.h"
 #include "Item.h"
 #include "Location.h"
 #include <map>
-#include <memory>
+#include <vector>
 
 class Passage;
 

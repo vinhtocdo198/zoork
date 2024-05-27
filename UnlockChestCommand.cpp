@@ -3,8 +3,6 @@
 //
 
 #include "UnlockChestCommand.h"
-#include <iostream>
-
 #include "Player.h"
 
 void UnlockChestCommand::execute()

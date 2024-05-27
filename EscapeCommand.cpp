@@ -4,8 +4,6 @@
 
 #include "EscapeCommand.h"
 
-#include <iostream>
-
 void EscapeCommand::execute()
 {
     std::cout << "You escape the house and find yourself in the front yard. As you walk away, the house crumbles and\n"

@@ -4,6 +4,7 @@
 
 #ifndef REARRANGEBOOKCOMMAND_H
 #define REARRANGEBOOKCOMMAND_H
+
 #include "Bookshelf.h"
 #include "Command.h"
 #include "Room.h"

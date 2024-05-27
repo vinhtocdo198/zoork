@@ -4,6 +4,7 @@
 
 #ifndef REMOVESTITCHESCOMMAND_H
 #define REMOVESTITCHESCOMMAND_H
+
 #include "Command.h"
 #include "Item.h"
 

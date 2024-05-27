@@ -4,6 +4,7 @@
 
 #ifndef LIGHTUPCOMMAND_H
 #define LIGHTUPCOMMAND_H
+
 #include "Command.h"
 #include "Item.h"
 

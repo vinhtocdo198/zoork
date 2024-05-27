@@ -4,6 +4,7 @@
 
 #ifndef INSTALLWATCHHANDCOMMAND_H
 #define INSTALLWATCHHANDCOMMAND_H
+
 #include "Command.h"
 #include "Item.h"
 

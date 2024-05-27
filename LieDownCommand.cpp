@@ -3,7 +3,6 @@
 //
 
 #include "LieDownCommand.h"
-#include <iostream>
 
 void LieDownCommand::execute()
 {

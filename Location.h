@@ -7,18 +7,15 @@
 
 #include "Command.h"
 #include "GameObject.h"
-#include "NullCommand.h"
-#include <memory>
 
 class Location : public GameObject
 {
 public:
-
     virtual ~Location() = default;
 
-    Location(const std::string &, const std::string &);
+    Location(const std::string&, const std::string&);
 
-    Location(const std::string &, const std::string &, std::shared_ptr<Command>);
+    Location(const std::string&, const std::string&, std::shared_ptr<Command>);
 
     virtual void enter();
 

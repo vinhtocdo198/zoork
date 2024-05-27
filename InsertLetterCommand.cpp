@@ -3,8 +3,6 @@
 //
 
 #include "InsertLetterCommand.h"
-#include <iostream>
-
 #include "Bookshelf.h"
 #include "Player.h"
 

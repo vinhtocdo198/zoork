@@ -3,8 +3,6 @@
 //
 
 #include "InstallClockHandCommand.h"
-#include <iostream>
-
 #include "Player.h"
 
 void InstallClockHandCommand::execute()

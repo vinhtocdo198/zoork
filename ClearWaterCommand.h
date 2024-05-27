@@ -4,8 +4,8 @@
 
 #ifndef CLEARWATERCOMMAND_H
 #define CLEARWATERCOMMAND_H
+
 #include "Command.h"
-#include "Item.h"
 #include "Room.h"
 
 class ClearWaterCommand : public Command

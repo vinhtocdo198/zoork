@@ -3,7 +3,6 @@
 //
 
 #include "NullCommand.h"
-#include <iostream>
 
 void NullCommand::execute()
 {
