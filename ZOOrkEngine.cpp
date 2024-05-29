@@ -95,56 +95,63 @@ void ZOOrkEngine::run()
 
 void ZOOrkEngine::handleGoCommand(const std::vector<std::string>& arguments) const
 {
-    // Check if the player has the lighter to enter the manor
-    if (!Player::getItem("lighter") && player->getCurrentRoom()->getDescription() ==
-        "You are standing in a lawn south of the manor. All windows are barred.\n"
-        "The front door is now opened.\n")
+    if (arguments.empty())
     {
-        std::cout << "It looks dark inside. Did I forget something?\n\n";
-        return;
-    }
-
-    // Check if the player has the oil lamp to see in the dark
-    if (!Player::getItem("oil-lamp") && player->getCurrentRoom()->getName() != "front-yard")
-    {
-        std::cout << "It's too dark to see anything. You need a light source.\n\n";
-        return;
-    }
-
-    std::string direction;
-    if (arguments[0] == "n" || arguments[0] == "north")
-    {
-        direction = "north";
-    }
-    else if (arguments[0] == "s" || arguments[0] == "south")
-    {
-        direction = "south";
-    }
-    else if (arguments[0] == "e" || arguments[0] == "east")
-    {
-        direction = "east";
-    }
-    else if (arguments[0] == "w" || arguments[0] == "west")
-    {
-        direction = "west";
-    }
-    else if (arguments[0] == "u" || arguments[0] == "up")
-    {
-        direction = "up";
-    }
-    else if (arguments[0] == "d" || arguments[0] == "down")
-    {
-        direction = "down";
+        std::cout << "Where do you want to go?\n\n";
     }
     else
     {
-        direction = arguments[0];
-    }
+        // Check if the player has the lighter to enter the manor
+        if (!Player::getItem("lighter") && player->getCurrentRoom()->getDescription() ==
+            "You are standing in a lawn south of the manor. All windows are barred.\n"
+            "The front door is now opened.\n")
+        {
+            std::cout << "It looks dark inside. Did I forget something?\n\n";
+            return;
+        }
 
-    Room* currentRoom = player->getCurrentRoom();
-    const auto passage = currentRoom->getPassage(direction);
-    player->setCurrentRoom(passage->getTo());
-    passage->enter();
+        // Check if the player has the oil lamp to see in the dark
+        if (!Player::getItem("oil-lamp") && player->getCurrentRoom()->getName() != "front-yard")
+        {
+            std::cout << "It's too dark to see anything. You need a light source.\n\n";
+            return;
+        }
+
+        std::string direction;
+        if (arguments[0] == "n" || arguments[0] == "north")
+        {
+            direction = "north";
+        }
+        else if (arguments[0] == "s" || arguments[0] == "south")
+        {
+            direction = "south";
+        }
+        else if (arguments[0] == "e" || arguments[0] == "east")
+        {
+            direction = "east";
+        }
+        else if (arguments[0] == "w" || arguments[0] == "west")
+        {
+            direction = "west";
+        }
+        else if (arguments[0] == "u" || arguments[0] == "up")
+        {
+            direction = "up";
+        }
+        else if (arguments[0] == "d" || arguments[0] == "down")
+        {
+            direction = "down";
+        }
+        else
+        {
+            direction = arguments[0];
+        }
+
+        Room* currentRoom = player->getCurrentRoom();
+        const auto passage = currentRoom->getPassage(direction);
+        player->setCurrentRoom(passage->getTo());
+        passage->enter();
+    }
 }
 
 void ZOOrkEngine::handleLookCommand(const std::vector<std::string>& arguments) const

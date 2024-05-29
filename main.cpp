@@ -102,7 +102,7 @@ int main()
     const auto kitchen = std::make_shared<Room>("kitchen",
                                                 "You are now in the kitchen. It is a total mess, with a [dining-table] covered in\n"
                                                 "plates of rotten food. A [fridge] stands in the corner next to a [stove], both coated\n"
-                                                "in dust and cobwebs. The air is thick with a sense of decay.\n");
+                                                "in dust and cobwebs. The laundry room is on your west.\n");
     const auto dining_table = std::make_shared<Item>("dining-table",
                                                      "A dining table, but I wouldn't sit here to enjoy my meals.",
                                                      false, false);
@@ -127,7 +127,7 @@ int main()
 
     const auto laundry_room = std::make_shared<Room>("laundry-room",
                                                      "You are now in the laundry room. There's nothing other than a [sink] and a\n"
-                                                     "[washing-machine].\n");
+                                                     "[washing-machine]. There is a toilet to the south.\n");
     const auto sink = std::make_shared<Item>("sink", "A flooded sink with water spilling over the edges.", false, true);
     const auto washing_machine = std::make_shared<Item>("washing-machine", "A broken washing machine.", false, false);
     const auto knife = std::make_shared<Item>("knife", "A sharp knife, might come in handy.", true, false);

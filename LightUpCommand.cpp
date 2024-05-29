@@ -6,5 +6,5 @@
 
 void LightUpCommand::execute()
 {
-    std::cout << "Lumos Maximaaaaa!!!.\n";
+    std::cout << "Lumos Maximaaaaa!!!\n";
 }
