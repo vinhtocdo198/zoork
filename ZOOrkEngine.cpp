@@ -51,7 +51,7 @@ void ZOOrkEngine::run()
         }
         else if (command == "quit" || command == "q")
         {
-            handleQuitCommand(arguments);
+            handleQuitCommand();
         }
         else if (command == "inventory" || command == "i")
         {
@@ -261,17 +261,18 @@ void ZOOrkEngine::handleDropCommand(const std::vector<std::string>& arguments) c
                 Item* item = *it;
                 Player::dropItem(arg);
                 player->getCurrentRoom()->addItem(item);
-                std::cout << "You dropped " << item->getName() << ".\n\n";
+                std::cout << "You dropped " << item->getName() << ".\n";
             }
             else
             {
-                std::cout << "You don't have that item.\n\n";
+                std::cout << "You don't have that item.\n";
             }
         }
+        std::cout << std::endl;
     }
 }
 
-void ZOOrkEngine::handleQuitCommand(const std::vector<std::string>& arguments)
+void ZOOrkEngine::handleQuitCommand()
 {
     std::string input;
     std::cout << "Are you sure you want to QUIT?\n\n> ";

@@ -31,9 +31,9 @@ public:
 
     Player& operator=(const Player&) = delete;
 
-    static void takeItem(Item* item);
+    static void takeItem(Item*);
 
-    static void dropItem(const std::string& itemName);
+    static void dropItem(const std::string&);
 
     static Item* getItem(const std::string&);
 
