@@ -23,8 +23,3 @@ void Door::unlock()
 {
     locked = false;
 }
-
-void Door::lock()
-{
-    locked = true;
-}
