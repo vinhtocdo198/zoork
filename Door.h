@@ -16,9 +16,7 @@ public:
 
     bool isLocked() const;
 
-    void unlock();
-
-    void lock();
+    void unlockDoor();
 
 protected:
     bool locked;

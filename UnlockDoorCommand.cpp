@@ -10,7 +10,7 @@ void UnlockDoorCommand::execute()
     if (door->isLocked())
     {
         std::cout << "You unlocked the front door." << std::endl;
-        door->unlock();
+        door->unlockDoor();
         Player::dropItem("front-key");
         Passage::createBasicPassage(door->getFrom(), door->getTo(), "north", false);
         door->getFrom()->setDescription("You are standing in a lawn south of the manor. All windows are barred.\n"

@@ -32,7 +32,6 @@ public:
 protected:
     bool obtainable;
     bool interactive;
-    bool inUse = false;
     std::shared_ptr<Command> useCommand;
 };
 

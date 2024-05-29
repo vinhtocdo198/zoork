@@ -19,7 +19,7 @@ bool Door::isLocked() const
     return locked;
 }
 
-void Door::unlock()
+void Door::unlockDoor()
 {
     locked = false;
 }
