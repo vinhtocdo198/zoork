@@ -5,7 +5,6 @@
 #ifndef ZOORK_ROOM_H
 #define ZOORK_ROOM_H
 
-#include "Character.h"
 #include "Item.h"
 #include "Location.h"
 #include <map>
@@ -36,7 +35,6 @@ public:
 
 protected:
     std::vector<Item*> items;
-    std::vector<Character*> characters;
     std::map<std::string, std::shared_ptr<Passage>> passageMap;
 };
 
