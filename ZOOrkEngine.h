@@ -16,8 +16,6 @@ public:
 
     void run();
 
-    // void setGameOver() const;
-
 private:
     bool gameOver = false;
 

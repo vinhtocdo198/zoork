@@ -95,12 +95,16 @@ void ZOOrkEngine::run()
 
 void ZOOrkEngine::handleGoCommand(const std::vector<std::string>& arguments) const
 {
-    if (!Player::getItem("lighter") && player->getCurrentRoom()->getName() == "front-yard")
+    // Check if the player has the lighter to enter the manor
+    if (!Player::getItem("lighter") && player->getCurrentRoom()->getDescription() ==
+        "You are standing in a lawn south of the manor. All windows are barred.\n"
+        "The front door is now opened.\n")
     {
         std::cout << "It looks dark inside. Did I forget something?\n\n";
         return;
     }
 
+    // Check if the player has the oil lamp to see in the dark
     if (!Player::getItem("oil-lamp") && player->getCurrentRoom()->getName() != "front-yard")
     {
         std::cout << "It's too dark to see anything. You need a light source.\n\n";
@@ -376,3 +380,8 @@ std::string ZOOrkEngine::makeLowercase(std::string input)
 
     return output;
 }
+
+// void ZOOrkEngine::setDoorLocked(const bool lock)
+// {
+//     doorUnlocked = lock;
+// }
