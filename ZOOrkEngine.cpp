@@ -198,7 +198,7 @@ void ZOOrkEngine::handleTakeCommand(const std::vector<std::string>& arguments) c
                 {
                     player->getCurrentRoom()->setDescription(
                         "You are now in the laundry room. There's nothing other than a [sink] and a\n"
-                        "[washing-machine].\n");
+                        "[washing-machine]. There is a toilet to the south.\n");
                 }
                 else if ((item->getName() == "i" || item->getName() == "l")
                     && player->getCurrentRoom()->getName() == "master-bedroom")
@@ -387,8 +387,3 @@ std::string ZOOrkEngine::makeLowercase(std::string input)
 
     return output;
 }
-
-// void ZOOrkEngine::setDoorLocked(const bool lock)
-// {
-//     doorUnlocked = lock;
-// }

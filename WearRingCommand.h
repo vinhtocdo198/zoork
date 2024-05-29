@@ -6,7 +6,6 @@
 #define WEARRINGCOMMAND_H
 
 #include "Command.h"
-#include "Item.h"
 #include "Room.h"
 
 class WearRingCommand : public Command
