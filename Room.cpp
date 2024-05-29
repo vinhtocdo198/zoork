@@ -58,35 +58,6 @@ Item* Room::retrieveItem(const std::string& itemName)
     return nullptr;
 }
 
-void Room::addCharacter(Character* c)
-{
-    characters.push_back(c);
-}
-
-void Room::removeCharacter(const std::string& characterName)
-{
-    for (auto it = characters.begin(); it != characters.end(); ++it)
-    {
-        if ((*it)->getName() == characterName)
-        {
-            characters.erase(it);
-            return;
-        }
-    }
-}
-
-Character* Room::getCharacter(const std::string& characterName)
-{
-    for (const auto& character : characters)
-    {
-        if (character->getName() == characterName)
-        {
-            return character;
-        }
-    }
-    return nullptr;
-}
-
 void Room::addPassage(const std::string& direction, std::shared_ptr<Passage> p)
 {
     passageMap[direction] = std::move(p);

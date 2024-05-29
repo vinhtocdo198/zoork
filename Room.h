@@ -28,12 +28,6 @@ public:
 
     Item* retrieveItem(const std::string&);
 
-    void addCharacter(Character*);
-
-    void removeCharacter(const std::string&);
-
-    Character* getCharacter(const std::string&);
-
     void addPassage(const std::string&, std::shared_ptr<Passage>);
 
     void removePassage(const std::string&);
