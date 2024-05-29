@@ -12,8 +12,8 @@
 class SetFireCommand : public Command
 {
 public:
-    explicit SetFireCommand(Item* o, Room* f, Room* lv, Room* p)
-        : Command(o), oil_lamp(o), foyer(f), living_room(lv), piano(p)
+    explicit SetFireCommand(Item* o, Room* f, Room* lv, Room* h)
+        : Command(o), oil_lamp(o), foyer(f), living_room(lv), hallway(h)
     {
     }
 
@@ -23,7 +23,7 @@ private:
     Item* oil_lamp;
     Room* foyer;
     Room* living_room;
-    Room* piano;
+    Room* hallway;
 };
 
 #endif //USEDURABLEITEMCOMMAND_H
