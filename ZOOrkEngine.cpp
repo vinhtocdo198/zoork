@@ -83,7 +83,7 @@ void ZOOrkEngine::run()
             std::cout << "I don't understand that command.\n\n";
         }
 
-        // First time when the player enters the house, close the door
+        // Only show this message when the player first enters the house
         if (player->getCurrentRoom()->getName() == "foyer" && !firstEnter)
         {
             std::cout << "The door behind you suddenly closes. You realize you are trapped inside this creepy place!\n"
