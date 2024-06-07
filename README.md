@@ -1,6 +1,6 @@
-# Zoork: The Haunted Manor
+# Zork: The Haunted Manor
 
-Welcome to Zoork, an interactive text adventure game set in a haunted manor. You are bankrupt and desperately in need of
+Welcome to Zork, an interactive text adventure game set in a haunted manor. You are bankrupt and desperately in need of
 money. Rumor has it that this abandoned house holds ancient jewelry worth a fortune. Will you take the chance and find
 the treasure?
 
@@ -12,8 +12,8 @@ the treasure?
 
 ## Introduction
 
-ZOOrk: The Haunted Manor is a text-based game created for my Professional Software Development assignment, based on the
-original ZOOrk game and inspired by hidden object games that I have enjoyed playing since I was small. Many thanks to my
+Zork: The Haunted Manor is a text-based game created for my Professional Software Development assignment, based on the
+original Zork game and inspired by hidden object games that I have enjoyed playing since I was small. Many thanks to my
 teacher, Dr. Richard Skarbez, for his guidance and support.
 
 ## How to Play
